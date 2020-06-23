@@ -226,6 +226,16 @@ class JupyterLabSublime {
     const activeCell = this.tracker.activeCell;
     if (activeCell !== null) {
       (activeCell.editor as CodeMirrorEditor).setOption('keyMap', 'sublime');
+      (activeCell.editor as CodeMirrorEditor).editor.setOption("extraKeys", {
+        "Alt-Up": function(cm) {
+          cm.execCommand("swapLineUp")
+        }
+      });
+      (activeCell.editor as CodeMirrorEditor).editor.setOption("extraKeys", {
+        "Alt-Down": function(cm) {
+          cm.execCommand("swapLineDown")
+        }
+      });
     }
   }
 }
